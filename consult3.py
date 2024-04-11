@@ -12,7 +12,7 @@ df = pd.DataFrame({
     'Values5': [15, 20, 12, 16, 19, 23],
     'Values6': [22, 19, 23, 20, 15, 21],
 })
-
+st.set_page_config(layout="wide")
 # Tytuł strony
 st.title("bookcraft pozdro dashboard")
 
@@ -36,7 +36,7 @@ with cols[0]:
         plot_bgcolor='#F3F6FA',
         paper_bgcolor='#F3F6FA',
         font=dict(color='#2a3f5f'),
-        margin=dict(l=20, r=20, t=20, b=20)
+        margin=dict(l=50, r=50, t=50, b=50)
     )))
     for _ in range(10):
         st.write("")
@@ -51,7 +51,7 @@ with cols[1]:
         plot_bgcolor='#F3F6FA',
         paper_bgcolor='#F3F6FA',
         font=dict(color='#2a3f5f'),
-        margin=dict(l=20, r=20, t=20, b=20)
+        margin=dict(l=50, r=50, t=50, b=50)
     )))
     for _ in range(10):
         st.write("")
@@ -71,7 +71,7 @@ with cols[2]:
         plot_bgcolor='#F3F6FA',
         paper_bgcolor='#F3F6FA',
         font=dict(color='#2a3f5f'),
-        margin=dict(l=20, r=20, t=20, b=20)
+        margin=dict(l=50, r=50, t=50, b=50)
     )))
     for _ in range(10):
         st.write("")
@@ -91,7 +91,7 @@ with cols[0]:
         plot_bgcolor='#F3F6FA',
         paper_bgcolor='#F3F6FA',
         font=dict(color='#2a3f5f'),
-        margin=dict(l=20, r=20, t=20, b=20)
+        margin=dict(l=50, r=50, t=50, b=50)
     )))
     for _ in range(10):
         st.write("")
@@ -106,7 +106,7 @@ with cols[1]:
         plot_bgcolor='#F3F6FA',
         paper_bgcolor='#F3F6FA',
         font=dict(color='#2a3f5f'),
-        margin=dict(l=20, r=20, t=20, b=20)
+        margin=dict(l=50, r=50, t=50, b=50)
     )))
     for _ in range(10):
         st.write("")
@@ -127,7 +127,7 @@ with cols[2]:
         plot_bgcolor='#F3F6FA',
         paper_bgcolor='#F3F6FA',
         font=dict(color='#2a3f5f'),
-        margin=dict(l=20, r=20, t=20, b=20)
+        margin=dict(l=50, r=50, t=50, b=50)
     )))
     for _ in range(10):
         st.write("")
