@@ -4,50 +4,130 @@ import pandas as pd
 
 # Przykładowe dane
 df = pd.DataFrame({
-    'Category': ['A', 'B', 'C', 'D'],
-    'Values': [20, 14, 23, 25],
-    'Values2': [10, 18, 16, 20],  # Dodatkowe dane dla drugiego wykresu
-    'Values3': [30, 10, 15, 20]  # Dodatkowe dane dla trzeciego wykresu
+    'Category': ['A', 'B', 'C', 'D', 'E', 'F'],
+    'Values1': [20, 14, 23, 25, 18, 22],
+    'Values2': [10, 18, 16, 20, 12, 15],
+    'Values3': [30, 10, 15, 20, 25, 17],
+    'Values4': [25, 15, 20, 18, 22, 19],
+    'Values5': [15, 20, 12, 16, 19, 23],
+    'Values6': [22, 19, 23, 20, 15, 21],
 })
 
 # Tytuł strony
 st.title("bookcraft pozdro dashboard")
 
-# Wykres słupkowy i liniowy
-st.plotly_chart(go.Figure(data=[
-    go.Bar(
-        x=df['Category'],
-        y=df['Values'],
-        name='Values',
-        marker=dict(color='#FF851B')  # Kolor słupków
-    ),
-    go.Scatter(
-        x=df['Category'],
-        y=df['Values2'],
-        name='Values2',
-        mode='lines+markers',
-        line=dict(color='#7FDBFF', width=2)  # Kolor linii
-    )
-], layout=go.Layout(
-    title='Sprzedaż w kategoriach A, B, C, D',
-    xaxis={'title': 'Category'},
-    yaxis={'title': 'Values'},
-    plot_bgcolor='#F3F6FA',  # Kolor tła wykresu
-    paper_bgcolor='#F3F6FA',  # Kolor tła dashboardu
-    font=dict(color='#2a3f5f'),  # Kolor tekstu
-    margin=dict(l=40, r=40, t=40, b=40)  # Marginesy
-)))
+# Ustawienie kolumn
+cols = st.columns(3)
 
-# Wykres kołowy
-st.plotly_chart(go.Figure(data=[
-    go.Pie(
-        labels=df['Category'],
-        values=df['Values3']
-    )
-], layout=go.Layout(
-    title='Udział wiekowy klientów czy coś??',
-    plot_bgcolor='#F3F6FA',  # Kolor tła wykresu
-    paper_bgcolor='#F3F6FA',  # Kolor tła dashboardu
-    font=dict(color='#2a3f5f'),  # Kolor tekstu
-    margin=dict(l=40, r=40, t=40, b=40)  # Marginesy
-)))
+# Wykresy - wiersz 1
+
+with cols[0]:
+    st.plotly_chart(go.Figure(data=[
+        go.Bar(
+            x=df['Category'],
+            y=df['Values1'],
+            name='Values1',
+            marker=dict(color='#FF851B')
+        )
+    ], layout=go.Layout(
+        title='Wykres 1',
+        xaxis={'title': 'Category'},
+        yaxis={'title': 'Values'},
+        plot_bgcolor='#F3F6FA',
+        paper_bgcolor='#F3F6FA',
+        font=dict(color='#2a3f5f'),
+        margin=dict(l=20, r=20, t=20, b=20)
+    )))
+    for _ in range(10):
+        st.write("")
+with cols[1]:
+    st.plotly_chart(go.Figure(data=[
+        go.Pie(
+            labels=df['Category'],
+            values=df['Values2']
+        )
+    ], layout=go.Layout(
+        title='Wykres 2',
+        plot_bgcolor='#F3F6FA',
+        paper_bgcolor='#F3F6FA',
+        font=dict(color='#2a3f5f'),
+        margin=dict(l=20, r=20, t=20, b=20)
+    )))
+    for _ in range(10):
+        st.write("")
+with cols[2]:
+    st.plotly_chart(go.Figure(data=[
+        go.Scatter(
+            x=df['Category'],
+            y=df['Values3'],
+            name='Values3',
+            mode='lines+markers',
+            line=dict(color='#7FDBFF', width=2)
+        )
+    ], layout=go.Layout(
+        title='Wykres 3',
+        xaxis={'title': 'Category'},
+        yaxis={'title': 'Values'},
+        plot_bgcolor='#F3F6FA',
+        paper_bgcolor='#F3F6FA',
+        font=dict(color='#2a3f5f'),
+        margin=dict(l=20, r=20, t=20, b=20)
+    )))
+    for _ in range(10):
+        st.write("")
+# Wykresy - wiersz 2
+with cols[0]:
+    st.plotly_chart(go.Figure(data=[
+        go.Bar(
+            x=df['Category'],
+            y=df['Values4'],
+            name='Values4',
+            marker=dict(color='#FF851B')
+        )
+    ], layout=go.Layout(
+        title='Wykres 4',
+        xaxis={'title': 'Category'},
+        yaxis={'title': 'Values'},
+        plot_bgcolor='#F3F6FA',
+        paper_bgcolor='#F3F6FA',
+        font=dict(color='#2a3f5f'),
+        margin=dict(l=20, r=20, t=20, b=20)
+    )))
+    for _ in range(10):
+        st.write("")
+with cols[1]:
+    st.plotly_chart(go.Figure(data=[
+        go.Pie(
+            labels=df['Category'],
+            values=df['Values5']
+        )
+    ], layout=go.Layout(
+        title='Wykres 5',
+        plot_bgcolor='#F3F6FA',
+        paper_bgcolor='#F3F6FA',
+        font=dict(color='#2a3f5f'),
+        margin=dict(l=20, r=20, t=20, b=20)
+    )))
+    for _ in range(10):
+        st.write("")
+with cols[2]:
+    st.plotly_chart(go.Figure(data=[
+        go.Scatter(
+            x=df['Category'],
+            y=df['Values6'],
+            name='Values6',
+            mode='lines+markers',
+            line=dict(color='#7FDBFF', width=2)
+        )
+        
+    ], layout=go.Layout(
+        title='Wykres 6',
+        xaxis={'title': 'Category'},
+        yaxis={'title': 'Values'},
+        plot_bgcolor='#F3F6FA',
+        paper_bgcolor='#F3F6FA',
+        font=dict(color='#2a3f5f'),
+        margin=dict(l=20, r=20, t=20, b=20)
+    )))
+    for _ in range(10):
+        st.write("")
