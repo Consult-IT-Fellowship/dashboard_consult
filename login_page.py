@@ -11,7 +11,22 @@ def login():
         if username == "boss" and password == "imboss":
             st.success("Logged in as {}".format(username))
             with open("login.txt", "w") as file:
-                file.write("True")
+                file.write("1")
+            return True
+        if username == "sales" and password == "imsales":
+            st.success("Logged in as {}".format(username))
+            with open("login.txt", "w") as file:
+                file.write("2")
+            return True
+        if username == "warehouse" and password == "imwarehouse":
+            st.success("Logged in as {}".format(username))
+            with open("login.txt", "w") as file:
+                file.write("3")
+            return True
+        if username == "it" and password == "imit":
+            st.success("Logged in as {}".format(username))
+            with open("login.txt", "w") as file:
+                file.write("4")
             return True
         else:
             st.error("Invalid username or password")
