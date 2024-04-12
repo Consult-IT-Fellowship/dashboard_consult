@@ -10,6 +10,8 @@ def login():
     if st.button("Login"):
         if username == "boss" and password == "imboss":
             st.success("Logged in as {}".format(username))
+            with open("login.txt", "w") as file:
+                file.write("True")
             return True
         else:
             st.error("Invalid username or password")
