@@ -1,7 +1,7 @@
 import streamlit as st
 from consult3 import landing_page, sales_page, warehouse_page
 from login_page import login
-
+from chatbot import chatbot_business
 def main():
     with open("login.txt", "r") as file:
         logged_in = file.read().strip()  # Odczytaj stan zalogowania
@@ -22,6 +22,10 @@ def main():
         page = st.sidebar.radio("Menu", ["IT Dashboard"])
         if page == "IT Dashboard":
             landing_page()
+    elif logged_in == "5":
+        page = st.sidebar.radio("Menu", ["Consultant Dashboard"])
+        if page == "Consultant Dashboard":
+            chatbot_business()
     else:
         page = st.sidebar.radio("Menu", ["Login"])  # Wyświetl tylko opcję logowania
         if page == "Login":
@@ -32,5 +36,3 @@ def main():
 if __name__ == "__main__":
     st.set_page_config(layout="wide")
     main()
-    with open("login.txt", "w") as file:
-        file.write("False")

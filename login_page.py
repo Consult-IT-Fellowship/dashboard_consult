@@ -23,6 +23,11 @@ def login():
             with open("login.txt", "w") as file:
                 file.write("3")
             return True
+        if username == "consultant" and password == "imconsultant":
+            st.success("Logged in as {}".format(username))
+            with open("login.txt", "w") as file:
+                file.write("5")
+            return True
         if username == "it" and password == "imit":
             st.success("Logged in as {}".format(username))
             with open("login.txt", "w") as file:

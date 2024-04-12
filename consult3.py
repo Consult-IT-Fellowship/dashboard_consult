@@ -1,6 +1,9 @@
 import streamlit as st
 import plotly.graph_objs as go
 import pandas as pd
+def save_logout_command():
+    with open("login.txt", "w") as file:
+        file.write("0")
 def landing_page():
     # Przykładowe dane
     df = pd.DataFrame({
@@ -131,6 +134,9 @@ def landing_page():
         )))
         for _ in range(10):
             st.write("")
+    if st.button("Log out"):
+        save_logout_command()
+        st.experimental_rerun()
 def sales_page():
     # Przykładowe dane
     df = pd.DataFrame({
@@ -205,6 +211,9 @@ def sales_page():
         )))
         for _ in range(10):
             st.write("")
+    if st.button("Log out"):
+        save_logout_command()
+        st.experimental_rerun()
 def warehouse_page():
     # Przykładowe dane
     df = pd.DataFrame({
@@ -279,3 +288,6 @@ def warehouse_page():
         )))
         for _ in range(10):
             st.write("")
+    if st.button("Log out"):
+        save_logout_command()
+        st.experimental_rerun()
