@@ -7,7 +7,7 @@ def main():
         logged_in = file.read().strip()  # Odczytaj stan zalogowania
 
     if logged_in == "True":
-        page = st.sidebar.radio("Menu", ["Consult"])  # Wyświetl tylko opcję konsultacji
+        page = st.sidebar.radio("Menu", ["Boss_Dashboard"])  # Wyświetl tylko opcję konsultacji
         if page == "Consult":
             landing_page()
     else:
@@ -20,3 +20,5 @@ def main():
 if __name__ == "__main__":
     st.set_page_config(layout="wide")
     main()
+    with open("login.txt", "w") as file:
+        file.write("False")
