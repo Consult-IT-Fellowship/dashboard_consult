@@ -7,8 +7,8 @@ def main():
         logged_in = file.read().strip()  # Odczytaj stan zalogowania
 
     if logged_in == "True":
-        page = st.sidebar.radio("Menu", ["Boss_Dashboard"])  # Wyświetl tylko opcję konsultacji
-        if page == "Consult":
+        page = st.sidebar.radio("Menu", ["Boss's Dashboard"])  # Wyświetl tylko opcję konsultacji
+        if page == "Boss's Dashboard":
             landing_page()
     else:
         page = st.sidebar.radio("Menu", ["Login"])  # Wyświetl tylko opcję logowania
