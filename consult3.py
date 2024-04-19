@@ -71,7 +71,6 @@ def landing_page():
         'Values5': [15, 20, 12, 16, 19, 23],
         'Values6': [22, 19, 23, 20, 15, 21],
     })
-    #st.set_page_config(layout="wide")
     # Tytuł strony
     st.title("Buisness Dashboard")
 
@@ -80,7 +79,7 @@ def landing_page():
 
     # Wykresy - wiersz 1
 
-# Tworzenie wykresu dla sales dla bossa (wykres sales)
+    # Tworzenie wykresu dla sprzedaży w poszczególnych miesiącach
     with cols[0]:
         fig = go.Figure(data=[
             go.Bar(
@@ -95,15 +94,12 @@ def landing_page():
             yaxis={'title': 'Values'},
             plot_bgcolor='#F3F6FA',
             paper_bgcolor='#0E1117',
-            font=dict(color='#2a3f5f'),
+            font=dict(color='#2a3f5f', size=20),
             margin=dict(l=50, r=50, t=50, b=50)  
         ))
-
-            # Dodanie tego jak to sie kurwa nazywa ... o tytuł wykresu chodziło 
-            # Wyswietlenie
         st.plotly_chart(fig)
 
-
+    # Wykres kołowy dla książek w magazynie
     with cols[1]:
         df2 = pd.DataFrame({'ksiazki': ['Fantasy', 'Dokument', 'Horror', 'Przygodowe', 'Dla dzieci', 'Belterystyka']})
         st.plotly_chart(go.Figure(data=[
@@ -115,10 +111,11 @@ def landing_page():
             title='Książki w magazynie',
             plot_bgcolor='#F3F6FA',
             paper_bgcolor='#0E1117',
-            font=dict(color='#2a3f5f'),
+            font=dict(color='#2a3f5f', size=20),
             margin=dict(l=50, r=50, t=50, b=50)
         )))
 
+    # Wykres liniowy dla marży brutto
     with cols[2]:
         st.plotly_chart(go.Figure(data=[
             go.Scatter(
@@ -134,15 +131,14 @@ def landing_page():
             yaxis={'title': 'Values'},
             plot_bgcolor='#F3F6FA',
             paper_bgcolor='#0E1117',
-            font=dict(color='#2a3f5f'),
+            font=dict(color='#2a3f5f', size=20),
             margin=dict(l=50, r=50, t=50, b=50)
         )))
 
-
     # Wykresy - wiersz 2
 
+    # Tworzenie wykresu dla przewidywanej sprzedaży AI na najbliższe 3 miesiące
     with cols[0]:
-    # Tworzenie wykresu
         fig = go.Figure(data=[
             go.Bar(
                 x=list(getting_sales_predicted().keys()),
@@ -156,19 +152,12 @@ def landing_page():
             yaxis={'title': 'Values'},
             plot_bgcolor='#F3F6FA',
             paper_bgcolor='#0E1117',
-            font=dict(color='#2a3f5f'),
+            font=dict(color='#2a3f5f', size=20),
             margin=dict(l=50, r=50, t=50, b=50)
         ))
-
-        # Dodawanie adnotacji
-
-    # Wyświetlanie wykresu
         st.plotly_chart(fig)
 
-
-
-
-        
+    # Wykres kołowy dla monitorowania zamówień na podstawie regionów
     with cols[1]:
         df3 = pd.DataFrame({'kraje': ['Polska', 'Honlandia', 'Niemcy', 'Francja', 'USA', 'Szwecja']})
         st.plotly_chart(go.Figure(data=[
@@ -180,10 +169,11 @@ def landing_page():
             title='Monitorowanie zamówień na podstawie regionów',
             plot_bgcolor='#F3F6FA',
             paper_bgcolor='#0E1117',
-            font=dict(color='#2a3f5f'),
+            font=dict(color='#2a3f5f', size=20),
             margin=dict(l=50, r=50, t=50, b=50)
         )))
 
+    # Wykres liniowy dla marży brutto z prognozą na najbliższe 3 miesiące
     with cols[2]:
         st.plotly_chart(go.Figure(data=[
             go.Scatter(
@@ -193,21 +183,21 @@ def landing_page():
                 mode='lines+markers',
                 line=dict(color='#7FDBFF', width=2)
             )
-            
         ], layout=go.Layout(
-            title='Marża brutto, prognoza na najblizsze 3 miesiące',
+            title='Marża brutto, prognoza na najbliższe 3 miesiące',
             xaxis={'title': 'Category'},
             yaxis={'title': 'Values'},
             plot_bgcolor='#F3F6FA',
             paper_bgcolor='#0E1117',
-            font=dict(color='#2a3f5f'),
+            font=dict(color='#2a3f5f', size=20),
             margin=dict(l=50, r=50, t=50, b=50)
         )))
 
-
+    # Przycisk wylogowania
     if st.button("Log out"):
         save_logout_command()
         st.experimental_rerun()
+
 def sales_page():
     # Przykładowe dane
     df = pd.DataFrame({
