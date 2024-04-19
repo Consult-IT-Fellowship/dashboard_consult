@@ -76,7 +76,7 @@ def landing_page():
     st.title("Buisness Dashboard")
 
     # Ustawienie kolumn
-    cols = st.columns(2)
+    cols = st.columns(3)
 
     # Wykresy - wiersz 1
 
@@ -102,10 +102,9 @@ def landing_page():
             # Dodanie tego jak to sie kurwa nazywa ... o tytuł wykresu chodziło 
             # Wyswietlenie
         st.plotly_chart(fig)
-        for _ in range(10):
-            st.write("")
 
-    with cols[0]:
+
+    with cols[1]:
         df2 = pd.DataFrame({'ksiazki': ['Fantasy', 'Dokument', 'Horror', 'Przygodowe', 'Dla dzieci', 'Belterystyka']})
         st.plotly_chart(go.Figure(data=[
             go.Pie(
@@ -119,9 +118,8 @@ def landing_page():
             font=dict(color='#2a3f5f'),
             margin=dict(l=50, r=50, t=50, b=50)
         )))
-        for _ in range(10):
-            st.write("")
-    with cols[0]:
+
+    with cols[2]:
         st.plotly_chart(go.Figure(data=[
             go.Scatter(
                 x=list(getting_sales_data2().keys()),
@@ -140,11 +138,10 @@ def landing_page():
             margin=dict(l=50, r=50, t=50, b=50)
         )))
 
-        for _ in range(10):
-            st.write("")
+
     # Wykresy - wiersz 2
 
-    with cols[1]:
+    with cols[0]:
     # Tworzenie wykresu
         fig = go.Figure(data=[
             go.Bar(
@@ -167,8 +164,7 @@ def landing_page():
 
     # Wyświetlanie wykresu
         st.plotly_chart(fig)
-        for _ in range(10):
-            st.write("")
+
 
 
 
@@ -187,9 +183,8 @@ def landing_page():
             font=dict(color='#2a3f5f'),
             margin=dict(l=50, r=50, t=50, b=50)
         )))
-        for _ in range(10):
-            st.write("")
-    with cols[1]:
+
+    with cols[2]:
         st.plotly_chart(go.Figure(data=[
             go.Scatter(
                 x=list(getting_sales_predicted().keys()),
@@ -209,8 +204,7 @@ def landing_page():
             margin=dict(l=50, r=50, t=50, b=50)
         )))
 
-        for _ in range(10):
-            st.write("")
+
     if st.button("Log out"):
         save_logout_command()
         st.experimental_rerun()
