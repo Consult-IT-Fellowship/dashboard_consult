@@ -90,12 +90,12 @@ def landing_page():
             )
         ], layout=go.Layout(
             title='Sprzedaż w poszczególnych miesiącach',
-            xaxis={'title': 'Category', 'tickvals': list(range(len(getting_sales_data()))), 'ticktext': list(getting_sales_data().keys())},  # Add tickvals and ticktext for custom x-axis labels
-            yaxis={'title': 'Values'},
+            xaxis={'title': 'Category', 'tickvals': list(range(len(getting_sales_data()))), 'ticktext': list(getting_sales_data().keys()), 'tickfont': dict(size=17)},  # Add tickvals and ticktext for custom x-axis labels
+            yaxis={'title': 'Values', 'tickfont': dict(size=19)},
             plot_bgcolor='#F3F6FA',
             paper_bgcolor='#0E1117',
             font=dict(color='#2a3f5f', size=20),
-            margin=dict(l=50, r=50, t=50, b=50)  
+            margin=dict(l=50, r=50, t=50, b=50),  
         ))
         st.plotly_chart(fig)
 
@@ -112,7 +112,8 @@ def landing_page():
             plot_bgcolor='#F3F6FA',
             paper_bgcolor='#0E1117',
             font=dict(color='#2a3f5f', size=20),
-            margin=dict(l=50, r=50, t=50, b=50)
+            margin=dict(l=50, r=50, t=50, b=50),
+            legend=dict(font=dict(size=20)) #legenda
         )))
 
     # Wykres liniowy dla marży brutto
@@ -127,8 +128,8 @@ def landing_page():
             )
         ], layout=go.Layout(
             title='Marża brutto',
-            xaxis={'title': 'Category'},
-            yaxis={'title': 'Values'},
+            xaxis={'title': 'Category', 'tickfont': dict(size=17)},
+            yaxis={'title': 'Values', 'tickfont': dict(size=19)},
             plot_bgcolor='#F3F6FA',
             paper_bgcolor='#0E1117',
             font=dict(color='#2a3f5f', size=20),
@@ -148,8 +149,8 @@ def landing_page():
             )
         ], layout=go.Layout(
             title='Przewidywana sprzedaż AI na najbliższe 3 miesiące',
-            xaxis={'title': 'Category'},
-            yaxis={'title': 'Values'},
+            xaxis={'title': 'Category', 'tickfont': dict(size=17)},
+            yaxis={'title': 'Values', 'tickfont': dict(size=19)},
             plot_bgcolor='#F3F6FA',
             paper_bgcolor='#0E1117',
             font=dict(color='#2a3f5f', size=20),
@@ -170,7 +171,8 @@ def landing_page():
             plot_bgcolor='#F3F6FA',
             paper_bgcolor='#0E1117',
             font=dict(color='#2a3f5f', size=20),
-            margin=dict(l=50, r=50, t=50, b=50)
+            margin=dict(l=50, r=50, t=50, b=50),
+            legend=dict(font=dict(size=20)) #legenda
         )))
 
     # Wykres liniowy dla marży brutto z prognozą na najbliższe 3 miesiące
@@ -185,8 +187,8 @@ def landing_page():
             )
         ], layout=go.Layout(
             title='Marża brutto, prognoza na najbliższe 3 miesiące',
-            xaxis={'title': 'Category'},
-            yaxis={'title': 'Values'},
+            xaxis={'title': 'Category', 'tickfont': dict(size=17)},
+            yaxis={'title': 'Values','tickfont': dict(size=19)},
             plot_bgcolor='#F3F6FA',
             paper_bgcolor='#0E1117',
             font=dict(color='#2a3f5f', size=20),
@@ -263,19 +265,20 @@ def sales_page():
         st.plotly_chart(fig)
 
         #AI proposition for sales
-    st.write("Propozycje AI jak poprawić sprzedaż na podstawie wykresu:")
-    st.write('')
-    st.write("Zwiększ liczbę odwiedzających witrynę internetową")
-    st.write("-Zoptymalizuj SEO strony.")
-    st.write("-Prowadź kampanie PPC.")
-    st.write("-Ułatw nawigację na stronie.")
-    st.write("-Oferuj bezpłatne próby/rabaty.")
-    st.write("")
-    st.write("Zwiększ średnią wartość zamówienia:")
-    st.write("-Oferuj produkty komplementarne.")
-    st.write("-Oferuj produkty komplementarne.")
-    st.write('Stwórz programy lojalnościowe.')
-    st.write('-Oferuj bezpłatną wysyłkę/zachęty.')
+    with cols[0]:
+        st.write("Propozycje AI jak poprawić sprzedaż na podstawie wykresu:")
+        st.write('')
+        st.write("Zwiększ liczbę odwiedzających witrynę internetową")
+        st.write("- Zoptymalizuj SEO strony.")
+        st.write("- Prowadź kampanie PPC.")
+        st.write("- Ułatw nawigację na stronie.")
+        st.write("- Oferuj bezpłatne próby/rabaty.")
+    with cols[1]:
+        st.write("Zwiększ średnią wartość zamówienia:")
+        st.write("- Oferuj produkty komplementarne.")
+        st.write("- Oferuj produkty komplementarne.")
+        st.write('- Stwórz programy lojalnościowe.')
+        st.write('- Oferuj bezpłatną wysyłkę/zachęty.')
 
     if st.button("Log out"):
         save_logout_command()
