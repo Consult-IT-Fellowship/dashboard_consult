@@ -369,14 +369,14 @@ def mobile():
     st.markdown("")  # Dodaj przerwę
     st.plotly_chart(go.Figure(data=[
         go.Bar(
-            x=df['Category'],
-            y=df['Values1'],
+            x=list(getting_sales_data().keys()),  
+            y=list(getting_sales_data().values()), 
             name='Values1',
             marker=dict(color='#FF851B')
         )
     ], layout=go.Layout(
-        xaxis={'title': 'Category'},
-        yaxis={'title': 'Values'},
+        xaxis={'title': 'Category', 'tickvals': list(range(len(getting_sales_data()))), 'ticktext': list(getting_sales_data().keys()), 'tickfont': dict(size=17)},  # Add tickvals and ticktext for custom x-axis labels
+        yaxis={'title': 'Values', 'tickfont': dict(size=19)},
         plot_bgcolor='#F3F6FA',
         paper_bgcolor='#0E1117',
         font=dict(color='#2a3f5f'),
@@ -409,15 +409,15 @@ def mobile():
     st.markdown("")  # Dodaj przerwę
     st.plotly_chart(go.Figure(data=[
         go.Scatter(
-            x=df['Category'],
-            y=df['Values3'],
+            x=list(getting_sales_data2().keys()),
+            y=list(getting_sales_data2().values()),
             name='Values3',
             mode='lines+markers',
             line=dict(color='#7FDBFF', width=2)
         )
     ], layout=go.Layout(
-        xaxis={'title': 'Category'},
-        yaxis={'title': 'Values'},
+        xaxis={'title': 'Category', 'tickfont': dict(size=17)},
+        yaxis={'title': 'Values', 'tickfont': dict(size=19)},
         plot_bgcolor='#F3F6FA',
         paper_bgcolor='#0E1117',
         font=dict(color='#2a3f5f'),
@@ -432,14 +432,14 @@ def mobile():
     st.markdown("")  # Dodaj przerwę
     st.plotly_chart(go.Figure(data=[
         go.Bar(
-            x=df['Category'],
-            y=df['Values4'],
+            x=list(getting_sales_predicted().keys()),
+            y=list(getting_sales_predicted().values()),
             name='Values4',
             marker=dict(color='#FF851B')
         )
     ], layout=go.Layout(
-        xaxis={'title': 'Category'},
-        yaxis={'title': 'Values'},
+        xaxis={'title': 'Category', 'tickfont': dict(size=17)},
+        yaxis={'title': 'Values', 'tickfont': dict(size=19)},
         plot_bgcolor='#F3F6FA',
         paper_bgcolor='#0E1117',
         font=dict(color='#2a3f5f'),
@@ -450,7 +450,7 @@ def mobile():
     st.markdown("---")
 
     # Tworzenie wykresu dla Values5
-    st.subheader("Monitorowanie zamówień na podstawie regionów")
+    st.subheader("Zamówienia według regionów")
     st.markdown("")  # Dodaj przerwę
     st.plotly_chart(go.Figure(data=[
         go.Pie(
@@ -472,8 +472,8 @@ def mobile():
     st.markdown("")  # Dodaj przerwę
     st.plotly_chart(go.Figure(data=[
         go.Scatter(
-            x=df['Category'],
-            y=df['Values6'],
+            x=list(getting_sales_predicted().keys()),
+            y=list(getting_sales_predicted().values()),
             name='Values6',
             mode='lines+markers',
             line=dict(color='#7FDBFF', width=2)

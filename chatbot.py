@@ -3,7 +3,7 @@ import openai
 from consult3 import save_logout_command
 def chatbot_business():
     # Ustawienie klucza API OpenAI
-    openai.api_key = "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"
+    openai.api_key = "sk-proj-naE4M40rdHuNzdO57MJ0T3BlbkFJu0VFZuzCMp929jmgE9Bw"
 
     # Funkcja do zadawania pytań za pomocą OpenAI GPT-3
     def ask_question(text):
