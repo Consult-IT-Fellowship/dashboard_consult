@@ -2,10 +2,10 @@ import streamlit as st
 
 def login():
     """Displays a login form and returns True if credentials are valid."""
-    st.title("Login Page")
+    st.title("Logowanie do systemu")
 
-    username = st.text_input("Username")
-    password = st.text_input("Password", type="password")
+    username = st.text_input("Nazwa użytkownika")
+    password = st.text_input("Hasło", type="password")
 
     if st.button("Login"):
         if username == "boss" and password == "imboss":

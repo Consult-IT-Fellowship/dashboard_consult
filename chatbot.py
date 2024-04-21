@@ -19,7 +19,7 @@ def chatbot_business():
         return response['choices'][0]['message']['content']
 
     # Tytuł strony
-    st.title("Chatbot")
+    st.title("Chatbot AI")
 
     # Pole tekstowe do wpisywania wiadomości
     user_input = st.text_input("Wpisz pytanie:", "")

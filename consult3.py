@@ -16,7 +16,7 @@ def getting_sales_data():
         'Styczeń' : sum(values[0:32]),
         'Luty' : sum(values[32:60]),
         'Marzec' : sum(values[60:91]),
-        'Kwiecien' : sum(values[91:121]),
+        'Kwiecień' : sum(values[91:121]),
         'Maj' : sum(values[121:152]),
         'Czerwiec' :sum(values[152:182]),
         'lipiec' :sum(values[182:213]),
@@ -47,7 +47,7 @@ def getting_sales_data2():
         'Styczeń' : sum(values[0:32])+ random.randint(-50000,50000),
         'Luty' : sum(values[32:60])+random.randint(-50000,50000),
         'Marzec' : sum(values[60:91] ) + random.randint(-50000,50000),
-        'Kwiecien' : sum(values[91:121])+ random.randint(-50000,50000),
+        'Kwiecień' : sum(values[91:121])+ random.randint(-50000,50000),
         'Maj' : sum(values[121:152])+ random.randint(-50000,50000),
         'Czerwiec' :sum(values[152:182])+random.randint(-50000,50000),
         'lipiec' :sum(values[182:213])+random.randint(-50000,50000),
@@ -83,7 +83,7 @@ def landing_page():
         'Values6': [22, 19, 23, 20, 15, 21],
     })
     # Tytuł strony
-    st.title("Buisness Dashboard")
+    st.title("Business Dashboard")
 
     # Ustawienie kolumn
     cols = st.columns(3)
@@ -112,7 +112,7 @@ def landing_page():
 
     # Wykres kołowy dla książek w magazynie
     with cols[1]:
-        df2 = pd.DataFrame({'ksiazki': ['Fantasy', 'Dokument', 'Horror', 'Przygodowe', 'Dla dzieci', 'Belterystyka']})
+        df2 = pd.DataFrame({'ksiazki': ['Fantasy', 'Dokument', 'Horror', 'Przygodowe', 'Dla dzieci', 'Beletrystyka']})
         st.plotly_chart(go.Figure(data=[
             go.Pie(
                 labels=df2['ksiazki'],
@@ -171,14 +171,14 @@ def landing_page():
 
     # Wykres kołowy dla monitorowania zamówień na podstawie regionów
     with cols[1]:
-        df3 = pd.DataFrame({'kraje': ['Polska', 'Honlandia', 'Niemcy', 'Francja', 'USA', 'Szwecja']})
+        df3 = pd.DataFrame({'kraje': ['Polska', 'Holandia', 'Niemcy', 'Francja', 'USA', 'Szwecja']})
         st.plotly_chart(go.Figure(data=[
             go.Pie(
                 labels=df3['kraje'],
                 values=df['Values5']
             )
         ], layout=go.Layout(
-            title='Monitorowanie zamówień na podstawie regionów',
+            title='Zamówienia według regionów',
             plot_bgcolor='#F3F6FA',
             paper_bgcolor='#0E1117',
             font=dict(color='#2a3f5f', size=20),
@@ -224,7 +224,7 @@ def sales_page():
     })
     #st.set_page_config(layout="wide")
     # Tytuł strony
-    st.title("Sales")
+    st.title("Dział Sprzedaży")
 
     # Ustawienie kolumn
     cols = st.columns(2)
@@ -307,12 +307,12 @@ def warehouse_page():
     })
     #st.set_page_config(layout="wide")
     # Tytuł strony
-    st.title("Warehouse")
+    st.title("Magazyn")
 
     # Ustawienie kolumn
     cols = st.columns(2)
     with cols[0]:
-        df2 = pd.DataFrame({'ksiazki': ['Fantasy', 'Dokument', 'Horror', 'Przygodowe', 'Dla dzieci', 'Belterystyka']})
+        df2 = pd.DataFrame({'ksiazki': ['Fantasy', 'Dokument', 'Horror', 'Przygodowe', 'Dla dzieci', 'Beletrystyka']})
         st.plotly_chart(go.Figure(data=[
             go.Pie(
                 labels=df2['ksiazki'],
@@ -327,25 +327,166 @@ def warehouse_page():
         )))
 
     with cols[1]:
-        df3 = pd.DataFrame({'kraje': ['Polska', 'Honlandia', 'Niemcy', 'Francja', 'USA', 'Szwecja']})
+        df3 = pd.DataFrame({'kraje': ['Polska', 'Holandia', 'Niemcy', 'Francja', 'USA', 'Szwecja']})
         st.plotly_chart(go.Figure(data=[
             go.Pie(
                 labels=df3['kraje'],
                 values=df['Values5']
             )
         ], layout=go.Layout(
-            title='Monitorowanie zamówień na podstawie regionów',
+            title='Zamówienia według regionów',
             plot_bgcolor='#F3F6FA',
             paper_bgcolor='#0E1117',
             font=dict(color='#2a3f5f'),
             margin=dict(l=50, r=50, t=50, b=50)
         )))
 
-    link='Link to magazine status in our database: [click here](https://docs.google.com/spreadsheets/d/1nd-cwH1cNfceeBij6SNzq-I2x7zfKsYwf_9zyWJxyEs/edit?usp=sharing)'
+    link='Link do szczegółowego stanu magazynu: [click here](https://docs.google.com/spreadsheets/d/1nd-cwH1cNfceeBij6SNzq-I2x7zfKsYwf_9zyWJxyEs/edit?usp=sharing)'
     st.markdown(link,unsafe_allow_html=True)
 
     for _ in range(10):
         st.write("")
+    if st.button("Log out"):
+        save_logout_command()
+        st.experimental_rerun()
+def mobile():
+    # Przykładowe dane
+    df = pd.DataFrame({
+        'Category': ['A', 'B', 'C', 'D', 'E', 'F'],
+        'Values1': [20, 14, 23, 25, 18, 22],
+        'Values2': [10, 18, 16, 20, 12, 15],
+        'Values3': [30, 10, 15, 20, 25, 17],
+        'Values4': [25, 15, 20, 18, 22, 19],
+        'Values5': [15, 20, 12, 16, 19, 23],
+        'Values6': [22, 19, 23, 20, 15, 21],
+    })
+
+    # Tytuł strony
+    st.title("Business Dashboard")
+
+    # Tworzenie wykresu dla Values1
+    st.subheader("Sprzedaż w poszczególnych miesiącach")
+    st.markdown("")  # Dodaj przerwę
+    st.plotly_chart(go.Figure(data=[
+        go.Bar(
+            x=df['Category'],
+            y=df['Values1'],
+            name='Values1',
+            marker=dict(color='#FF851B')
+        )
+    ], layout=go.Layout(
+        xaxis={'title': 'Category'},
+        yaxis={'title': 'Values'},
+        plot_bgcolor='#F3F6FA',
+        paper_bgcolor='#0E1117',
+        font=dict(color='#2a3f5f'),
+        margin=dict(l=50, r=50, t=50, b=50)
+    )), use_container_width=True, height=300, width=400)
+
+    # Dodaj przerwę między wykresami
+    st.markdown("---")
+
+    # Tworzenie wykresu dla Values2
+    st.subheader("Książki w magazynie")
+    st.markdown("")  # Dodaj przerwę
+    st.plotly_chart(go.Figure(data=[
+        go.Pie(
+            labels=['Fantasy', 'Dokument', 'Horror', 'Przygodowe', 'Dla dzieci', 'Beletrystyka'],
+            values=df['Values2']
+        )
+    ], layout=go.Layout(
+        plot_bgcolor='#F3F6FA',
+        paper_bgcolor='#0E1117',
+        font=dict(color='#2a3f5f'),
+        margin=dict(l=50, r=50, t=50, b=50)
+    )), use_container_width=True, height=300, width=400)
+
+    # Dodaj przerwę między wykresami
+    st.markdown("---")
+
+    # Tworzenie wykresu dla Values3
+    st.subheader("Marża brutto")
+    st.markdown("")  # Dodaj przerwę
+    st.plotly_chart(go.Figure(data=[
+        go.Scatter(
+            x=df['Category'],
+            y=df['Values3'],
+            name='Values3',
+            mode='lines+markers',
+            line=dict(color='#7FDBFF', width=2)
+        )
+    ], layout=go.Layout(
+        xaxis={'title': 'Category'},
+        yaxis={'title': 'Values'},
+        plot_bgcolor='#F3F6FA',
+        paper_bgcolor='#0E1117',
+        font=dict(color='#2a3f5f'),
+        margin=dict(l=50, r=50, t=50, b=50)
+    )), use_container_width=True, height=300, width=400)
+
+    # Dodaj przerwę między wykresami
+    st.markdown("---")
+
+    # Tworzenie wykresu dla Values4
+    st.subheader("Przewidywana sprzedaż AI na najbliższe 3 miesiące")
+    st.markdown("")  # Dodaj przerwę
+    st.plotly_chart(go.Figure(data=[
+        go.Bar(
+            x=df['Category'],
+            y=df['Values4'],
+            name='Values4',
+            marker=dict(color='#FF851B')
+        )
+    ], layout=go.Layout(
+        xaxis={'title': 'Category'},
+        yaxis={'title': 'Values'},
+        plot_bgcolor='#F3F6FA',
+        paper_bgcolor='#0E1117',
+        font=dict(color='#2a3f5f'),
+        margin=dict(l=50, r=50, t=50, b=50)
+    )), use_container_width=True, height=300, width=400)
+
+    # Dodaj przerwę między wykresami
+    st.markdown("---")
+
+    # Tworzenie wykresu dla Values5
+    st.subheader("Monitorowanie zamówień na podstawie regionów")
+    st.markdown("")  # Dodaj przerwę
+    st.plotly_chart(go.Figure(data=[
+        go.Pie(
+            labels=['Polska', 'Holandia', 'Niemcy', 'Francja', 'USA', 'Szwecja'],
+            values=df['Values5']
+        )
+    ], layout=go.Layout(
+        plot_bgcolor='#F3F6FA',
+        paper_bgcolor='#0E1117',
+        font=dict(color='#2a3f5f'),
+        margin=dict(l=50, r=50, t=50, b=50)
+    )), use_container_width=True, height=300, width=400)
+
+    # Dodaj przerwę między wykresami
+    st.markdown("---")
+
+    # Tworzenie wykresu dla Values6
+    st.subheader("Marża brutto, prognoza na najbliższe 3 miesiące")
+    st.markdown("")  # Dodaj przerwę
+    st.plotly_chart(go.Figure(data=[
+        go.Scatter(
+            x=df['Category'],
+            y=df['Values6'],
+            name='Values6',
+            mode='lines+markers',
+            line=dict(color='#7FDBFF', width=2)
+        )
+    ], layout=go.Layout(
+        xaxis={'title': 'Category'},
+        yaxis={'title': 'Values'},
+        plot_bgcolor='#F3F6FA',
+        paper_bgcolor='#0E1117',
+        font=dict(color='#2a3f5f'),
+        margin=dict(l=50, r=50, t=50, b=50)
+    )), use_container_width=True, height=300, width=400)
+
     if st.button("Log out"):
         save_logout_command()
         st.experimental_rerun()

@@ -1,5 +1,5 @@
 import streamlit as st
-from consult3 import landing_page, sales_page, warehouse_page
+from consult3 import landing_page, sales_page, warehouse_page, mobile
 from login_page import login
 from chatbot import chatbot_business
 def main():
@@ -21,7 +21,7 @@ def main():
     elif logged_in == "4":
         page = st.sidebar.radio("Menu", ["IT Dashboard"])
         if page == "IT Dashboard":
-            landing_page()
+            mobile()
     elif logged_in == "5":
         page = st.sidebar.radio("Menu", ["Consultant Dashboard"])
         if page == "Consultant Dashboard":
