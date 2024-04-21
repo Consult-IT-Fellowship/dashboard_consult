@@ -1,6 +1,7 @@
 import streamlit as st
 import plotly.graph_objs as go
 import pandas as pd
+import random
 
 def save_logout_command():
     with open("login.txt", "w") as file:
@@ -31,33 +32,43 @@ def getting_sales_data():
 def getting_sales_predicted():
     data = pd.read_csv('data_set.csv')
     values = data['value']
-    data = {'Styczeń' : sum(values[0:32])-100000,
-        'Luty' : sum(values[32:60])+75000,
-        'Marzec' : sum(values[60:91]) - 50000
+    data = {'Styczeń' : 10604378,
+        'Luty' : 9712031,
+        'Marzec' : 10055337
     }
 
     return data
+
 def getting_sales_data2():
     data = pd.read_csv('data_set.csv')
     values = data['value']
 
     months = {
-        'Styczeń' : sum(values[0:32])- 1000000,
-        'Luty' : sum(values[32:60])- 1000000,
-        'Marzec' : sum(values[60:91] )- 1000000,
-        'Kwiecien' : sum(values[91:121])- 1000000,
-        'Maj' : sum(values[121:152])- 1000000,
-        'Czerwiec' :sum(values[152:182])- 1000000,
-        'lipiec' :sum(values[182:213])- 1000000,
-        'Sierpień' :sum(values[213:244])- 1000000,
-        'Wrzesień' :sum(values[244:274])- 1000000,
-        'Październik' :sum(values[274:305])- 1000000,
-        'Listopad' : sum(values[305:335])- 1000000, 
-        'Grudzień' :sum(values[335:366])- 1000000,
+        'Styczeń' : sum(values[0:32])+ random.randint(-50000,50000),
+        'Luty' : sum(values[32:60])+random.randint(-50000,50000),
+        'Marzec' : sum(values[60:91] ) + random.randint(-50000,50000),
+        'Kwiecien' : sum(values[91:121])+ random.randint(-50000,50000),
+        'Maj' : sum(values[121:152])+ random.randint(-50000,50000),
+        'Czerwiec' :sum(values[152:182])+random.randint(-50000,50000),
+        'lipiec' :sum(values[182:213])+random.randint(-50000,50000),
+        'Sierpień' :sum(values[213:244])+random.randint(-50000,50000),
+        'Wrzesień' :sum(values[244:274])+random.randint(-50000,50000),
+        'Październik' :sum(values[274:305])+random.randint(-50000,50000),
+        'Listopad' : sum(values[305:335])+random.randint(-50000,50000), 
+        'Grudzień' :sum(values[335:366])+ random.randint(-50000,50000),
     }
     return months
 
+def getting_sales_data2_predicted():
+    data = pd.read_csv('data_set.csv')
+    values = data['value']
 
+    months = {
+        'Styczeń' :  9712031,
+        'Luty' :12055337,
+        'Marzec' : 10055337
+    }
+    return months
 
 
 def landing_page():
